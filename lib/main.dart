@@ -16,7 +16,7 @@ class TicTacToeApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: Color(0xFFE6E6E9),
-          primaryColor: Color(0xFF000000),
+          primaryColor: Color(0xFF253652),
           hintColor: Color(0xFF66666E),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
@@ -30,16 +30,28 @@ class TicTacToeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text('Tic Tac Toe', style: TextStyle(color: Colors.white),),
+        title: Text('Tic Tac Toe', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         centerTitle: true,
+        backgroundColor: Color(0xFF253652),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          Board(),
-          SizedBox(height: 20),
-          ResetButton(),
+
+          Positioned.fill(
+            child: Image.network(
+              'https://i.pinimg.com/originals/5b/36/24/5b3624a6f7f8b5c79615bc3ad301836d.jpg', // Replace with your image URL
+              fit: BoxFit.cover,
+            ),
+          ),
+          // Main content
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Board(),
+              SizedBox(height: 20),
+              ResetButton(),
+            ],
+          ),
         ],
       ),
     );
@@ -69,7 +81,7 @@ class Board extends StatelessWidget {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFFF4F4F6),
+                      color: Color(0xFF9999A1),
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
@@ -86,7 +98,7 @@ class Board extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 60,
                           fontWeight: FontWeight.bold,
-                          color: game.board[index] == 'X' ? Color(0xFF9999A1) : Color(0xFF66666E),
+                          color: game.board[index] == 'X' ? Color(0xFFC2FCF7) : Color(0xFFE6E6E9),
                         ),
                       ),
                     ),
@@ -114,7 +126,7 @@ class ResetButton extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF9999A1),
+                  color: Color(0xFFC2FCF7), // Wins message color
                 ),
               ),
             SizedBox(height: 20),
@@ -123,12 +135,12 @@ class ResetButton extends StatelessWidget {
                 game.resetGame();
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF000000),
+                backgroundColor: Color(0xFF253652), // Button color
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                 textStyle: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.white, // Button text color
                 ),
               ),
               child: Text('Reset Game', style: TextStyle(color: Colors.white),),
